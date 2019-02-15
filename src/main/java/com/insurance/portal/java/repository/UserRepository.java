@@ -5,4 +5,6 @@ import com.insurance.portal.java.entity.*;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
+	User findByUsername(String username);
+
 }

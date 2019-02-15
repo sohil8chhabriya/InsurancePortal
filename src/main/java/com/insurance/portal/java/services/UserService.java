@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.insurance.portal.java.entity.*;
 import com.insurance.portal.java.repository.UserRepository;
@@ -15,29 +17,30 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public List<UserBasicDetails> getUserList() {
-		List<UserBasicDetails> user = new ArrayList<UserBasicDetails>();
+	public List<User> getUserList() {
+		List<User> user = new ArrayList<User>();
 		userRepository.findAll()
 		.forEach(user::add);
 		return user;
 	}
 	
-	public Optional<UserBasicDetails> getUser(Integer id) {
+	public Optional<User> getUser(Integer id) {
 		return userRepository.findById(id);
 		//return this.user.stream().filter(u -> u.getId().equals(id)).findFirst().get();
 	}
 
-	public void addUser(UserBasicDetails user) {
-		System.out.println("username:"+user.getName());
-		System.out.println("Phone:"+user.getPhone());
-		System.out.println("Address:"+user.getAddress());
-		System.out.println("Dob:"+user.getDob());
-		System.out.println("Gender:"+user.getGender());
-		System.out.println("Email:"+user.getEmail());
+	public void addUser(User user) {
+		/*UserBasicDetails userDetails = user.getUserBasicDetails();
+		System.out.println("username:"+userDetails.getName());
+		System.out.println("Phone:"+userDetails.getPhone());
+		System.out.println("Address:"+userDetails.getAddress());
+		System.out.println("Dob:"+userDetails.getDob());
+		System.out.println("Gender:"+userDetails.getGender());
+		System.out.println("Email:"+userDetails.getEmail());*/
 		userRepository.save(user);
 	}
 
-	public void updateUser(Integer id, UserBasicDetails user) {
+	public void updateUser(Integer id, User user) {
 		userRepository.save(user);
 		//		for(int i = 0; i < this.user.size(); i++) {
 		//			User u = this.user.get(i);
@@ -52,4 +55,5 @@ public class UserService {
 		userRepository.deleteById(id);
 		//this.user.removeIf(u -> u.getId().equals(id));
 	}
+
 }
