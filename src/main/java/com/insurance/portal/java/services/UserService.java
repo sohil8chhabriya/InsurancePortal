@@ -27,7 +27,7 @@ public class UserService {
 	}
 	
 	public Optional<User> getUser(Integer id) {
-		return userRepository.findById(id);
+		return userRepository.findById(id.longValue());
 		//return this.user.stream().filter(u -> u.getId().equals(id)).findFirst().get();
 	}
 
@@ -40,7 +40,7 @@ public class UserService {
 	}
 
 	public void deleteUser(Integer id) {
-		userRepository.deleteById(id);
+		userRepository.deleteById(id.longValue());
 		//this.user.removeIf(u -> u.getId().equals(id));
 	}
 	
@@ -91,4 +91,8 @@ public class UserService {
 	public User getUserByPhone(String phone) {
 		return userRepository.getUserByPhone(Long.parseLong(phone));
 	}
+
+/*	public List<Policy> getAllPoliciesOfUser(String id) {
+		return policyService.getAllPolicyByUserId(Long.parseLong(id));
+	}*/
 }

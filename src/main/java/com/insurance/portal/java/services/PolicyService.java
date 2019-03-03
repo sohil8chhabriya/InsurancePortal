@@ -7,6 +7,7 @@ import com.insurance.portal.java.entity.Policy;
 import com.insurance.portal.java.entity.User;
 import com.insurance.portal.java.repository.PolicyRepository;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,10 @@ public class PolicyService {
 
 		return addPolicy(fetchedPolicy);
 	}
+
+/*	public List<Policy> getAllPolicyByUserId(Long i) {
+		return policyRepository.findByUserId(i);
+	}*/
 
 	public Policy getPolicyDetails(String policyId) {
 		return policyRepository.getOne(Integer.parseInt(policyId));

@@ -54,11 +54,18 @@ public class UserController {
 		return userService.getUserByEmail(email);
 	}
 
+/*	@RequestMapping(method=RequestMethod.GET, value="/user/{id}/policy")
+	public List<Policy> getAllPoliciesOfUser(@PathVariable String id) {
+		System.out.println("*************************User's policies is getting fetched using id"+id);
+		return userService.getAllPoliciesOfUser(id);
+	}
+*/
 	@RequestMapping(method=RequestMethod.GET, value="/user/{phone}")
 	public User getUserByPhone(@PathVariable String phone) {
 		System.out.println("*************************User is getting fetched using phone"+phone);
 		return userService.getUserByPhone(phone);
 	}
+
 	@RequestMapping(method=RequestMethod.GET, value="/users/{id}")
 	public Optional<User> getUser(@PathVariable String id) {
 		return userService.getUser(Integer.parseInt(id));
